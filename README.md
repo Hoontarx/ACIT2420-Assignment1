@@ -40,7 +40,7 @@ ls #This will print out a list of directories
 ```
 
 The .ssh directory can be found towards the top of the list as shown in the below screen shot:
-![[assets/Pasted image 20240927225448.png]]
+![[./assets/Pasted image 20240927225448.png]]
 
 If you're missing this directory then you can run the following command in your terminal:
 ```sh
@@ -56,17 +56,69 @@ ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email
 ```
 
 >[!note] Note
->Passphrases are optional, in this tutorial we will not be entering one. If you do make sure to keep it somewhere safe and make it something that you can remember
+>Passphrases are optional, in this tutorial we will not be entering one. If you do, make sure to keep it somewhere safe and make it something that you can remember
 
 2. Hit **Enter** twice
 
  There should now be two plain text files located in your .ssh directory and the terminal output will look similar to this:
- ![[Pasted image 20240927232641.png]]
+ ![[./assets/Pasted image 20240927232641.png]]
 
+### Adding the SSH keys to your DigitalOcean Account
 
+Now that the SSH key pairs have been created, it's time to add them to your DigitalOcean Account. Once added, they will be automatically copied to your Droplet once it's created.
+
+Since the keys are plain text files, we can run a command in the terminal to copy them. This will copy it to your clipboard so we can paste them into DigitalOcean.
+
+1. Run the following command in your terminal
+```sh
+Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard
+```
+
+2. In DigitalOcean, Click Settings on the left sidebar
+![[./assets/Pasted image 20240928000336.png]]
+3. Click Security
+![[./assets/Pasted image 20240928000445.png]]
+4. Click Add SSH Key
+
+5. Paste the keys into the SSH Key Content box
+
+6. Type a name for your Keys
+
+7. Click Add SSH Key
+
+The SSH keys are now added to your DigitalOcean account and are ready for use when we create the Droplet!
 ## Adding a Custom Arch Linux Image Using the Web Console
 
-For the server we are creating on DigitalOcean, we will be using Linux as our operating system and Arch is the distribution of Linux we will be using in this tutorial. 
+For the server we are creating on DigitalOcean, we will be using Linux as our operating system and Arch will be the distribution of Linux we are using in this tutorial. 
+
+The Arch Linux Image can be found at the following link:
+https://gitlab.archlinux.org/archlinux/arch-boxes/-/packages/1545
+
+The image we want to download is the "cloudimg" one with ".qcow2" at the end as shown in the screen shot below:
+![[./assets/Pasted image 20240927234215.png]]
+
+We will be using ".qcow2" as it's known for its efficiency and flexibility.
+
+Now that we have download the Arch Linux Image, we want to add it to DigitalOcean.
+
+1. On the left sidebar under Manage, Click Backups & Snapshots
+![[./assets/Pasted image 20240928000807.png]]
+
+2. Click Custom Images
+![[./assets/Pasted image 20240928000902.png]]
+
+3. Click Upload Image
+![[./assets/Pasted image 20240928001119.png]]
+
+Upload the Arch Linux Image that was downloaded earlier
+
+4. Select Arch Linux in the Distribution dropdown menu
+
+5. Select San Francisco 3
+
+6. Click Upload Image
+
+The Upload will take a couple of minutes, once completed, it will be ready to use when the Droplet is created.
 
 ## Using a Cloud-Init Configuration File to Automate Initial Setup
 
