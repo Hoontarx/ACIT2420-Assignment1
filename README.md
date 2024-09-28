@@ -47,6 +47,21 @@ If you're missing this directory then you can run the following command in your 
 mkdir .ssh
 ```
 
+Now that we have the necessary directory we can create our SSH keys!
+
+1. In the terminal, run the following command. 
+Replace "your-user-name" with your Windows username and the email to your email:
+```sh
+ssh-keygen -t ed25519 -f C:\Users\your-user-name\.ssh\do-key -C "youremail@email.com"
+```
+
+>[!note] Note
+>Passphrases are optional, in this tutorial we will not be entering one. If you do make sure to keep it somewhere safe and make it something that you can remember
+
+2. Hit **Enter** twice
+
+ There should now be two plain text files located in your .ssh directory and the terminal output will look similar to this:
+ ![[Pasted image 20240927232641.png]]
 
 
 ## Adding a Custom Arch Linux Image Using the Web Console
