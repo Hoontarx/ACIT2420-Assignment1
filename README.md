@@ -166,19 +166,19 @@ There's 3 sections we will want to manually replace: "name", "primary_group", an
 
 The "name" section will be the name of your user, similar to your windows user name. 
 The "primary_group" should be the same as what was used for "name"
-The "ssh-authorized-keys" will be the public key footprint that was created earlier.
+The "ssh-authorized-keys" will be the public key that was created earlier.
 
-Run the following command to copy the ssh key fingerprint to your clipboard:
+Run the following command where "your-user-name" is your windows user and "do-key.pub" is your public key to copy the ssh key fingerprint to your clipboard:
 ```sh
-ssh-keygen -lf C:\Users\your-user-name\.ssh\do-key | Set-Clipboard
+Get-Content C:\Users\your-user-name\.ssh\do-key.pub | Set-Clipboard
 ```
 
 You'll get something that looks like this:
 ```
-256 SHA256:Our1gOR6uX2weVMpH7eeDZGkV6I5KqWl+AIBm7RPFWA hjb@telus.net (ED25519)
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAKi8I1lEvxBLQlKfawz70mJc8DetzYyHP3HgvGxhCUh hjb@telus.net
 ```
 
-Paste it into the .yml file and delete the "256 SHA256:" from the beginning and "(ED25519)" from the end.
+Paste it into the .yml file.
 
 Now our .yml file is ready and DigitalOcean will apply the settings we have set when creating the Droplet.
 ## Creating a Droplet Running Arch Linux Using the DigitalOcean Web Console
@@ -265,7 +265,14 @@ Host arch
 ssh arch
 ```
 
+This will connect you to your Droplet and it will look like this in your terminal:
+![[./assets/Pasted image 20240928021238.png]]
+The main thing to look for is the terminal now shows [arch@your-host-name ~] instead of "PS C:Users\your-user-name>"
 
+>[!note] Note
+>You can exit the virtual environment by typing exit and hitting Enter
+
+You've officially connected to your DigitalOcean Droplet using SSH keys! Feel free to create multiple Droplets to get used to setting them up.
 ## References:
 
 “What Is DigitalOcean?” _SearchCloudComputing_, 
