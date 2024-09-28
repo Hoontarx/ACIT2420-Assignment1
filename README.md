@@ -29,7 +29,9 @@ There will be a total of two SSH keys generated, an authentication key and an id
 Now lets get into generating our SSH keys!
 
 ### Creating a new SSH key pair
-[!note] If you're using Windows, you might need to create a .ssh directory in your home directory first. To check to see if you already have one, you can use the following commands in your terminal.
+
+>[!note] Note
+>If you're using Windows, you might need to create a .ssh directory in your home directory first. To check to see if you already have one, you can use the following commands in your terminal.
 
 ```sh
 cd ~ #This will take you to your home directory
@@ -38,7 +40,7 @@ ls #This will print out a list of directories
 ```
 
 The .ssh directory can be found towards the top of the list as shown in the below screen shot:
-![[Pasted image 20240927225448.png]]
+![[assets/Pasted image 20240927225448.png]]
 
 If you're missing this directory then you can run the following command in your terminal:
 ```sh
